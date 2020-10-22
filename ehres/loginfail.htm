@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Employee Sign In</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<LINK href="css/login.css" 
+rel=stylesheet>
+<META content="Microsoft FrontPage 5.0" name=GENERATOR></HEAD>
+<BODY vLink=#000099 aLink=#000099 link=#000099 bgColor=#ffffff>
+
+
+<script language="javascript">
+
+function ValidateInput() 
+{
+	var localLoginID = document.forms[0].txtUserID.value
+	if (localLoginID.length == 0) 
+	{
+		alert("Please enter your Employee ID.")
+		document.forms[0].txtUserID.focus()
+		return
+	}
+	if (document.forms[0].txtPassword.value.length == 0) 
+	{
+		alert("Please enter your Password.")
+		document.forms[0].txtPassword.focus()
+		return
+	}
+    document.forms[0].submit()
+}
+
+</Script>
+
+
+<TABLE cellSpacing=0 cellPadding=0 align=center border=0 height="37">
+  <TBODY>
+  <TR>
+    <TD align=middle width="100%" bgColor=#ffffff class="heading" height="24">Human
+      Resource Enterprise System </TD></TR>
+  <TR>
+    <TD align=middle width="100%" bgColor=#cccccc height="13">
+      &nbsp;</TD></TR></TBODY></TABLE><!--head.inc--><BR>
+<TABLE borderColor=#000066 cellSpacing=0 cellPadding=5 align=center border=1>
+  <TBODY>
+  <TR bgColor=#000066>
+    <TD class=white>
+      <DIV align=center><font color="#FFFFFF">Please enter your Employee ID and Password.</font></DIV></TD></TR>
+  <TR>
+    <TD>
+      <FORM action="security/validateuser.asp" method=post>
+      <TABLE cellSpacing=0 cellPadding=3 width="100%" align=center border=0>
+        <TBODY>
+        <TR>
+          <TD class=normal>Employee ID</TD>
+          <TD><INPUT class=small name="txtUserID" maxlength="10" size="20" tabindex="1" > </TD></TR>
+        <TR>
+          <TD class=normal>Password</TD>
+          <TD><INPUT class=small type=password name="txtPassword" maxlength="30" size="20" tabindex="2"> </TD></TR>
+        <TR>
+          <TD>&nbsp;</TD>
+          <TD>
+              <INPUT class=small type=Submit value="Sign In" name=Submit tabindex="3" onclick ="ValidateInput()"> 
+        </TD></TR></TBODY></TABLE></FORM>
+      <P class=small align=center>Forgot your password? <BR><A 
+      href="forgetpass.htm">Click here for help.</A> 
+  </P></TD></TR></TBODY></TABLE><BR><!--foot.inc-->
+<div align="center">
+  <center>
+  <table border="0">
+    <tr>
+      <td class="red" width="100%" align="center">Invalid Employee ID or Password</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<TABLE cellSpacing=0 cellPadding=0 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle width="100%">
+      <HR>
+
+    </TD></TR>
+  <TR>
+    <TD align=middle width="100%"><BR>
+      <p>Copyright © 1997-2005 SoftFac Technology Sdn Bhd <i>All Rights Reserved</i>.
+    </p>
+      <P class=small>&nbsp;</P></TD></TR></TBODY></TABLE>
+<IMG 
+src="image/count.gif" border=0 width="5" height="5"> <!--foot.inc--></BODY>
