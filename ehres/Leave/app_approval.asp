@@ -145,7 +145,7 @@ if(win.focus){win.focus();}}
         function ApproveRejectLeave() {
             var maxrow, approve;
             maxrow = parseInt(document.frmLeaveApproval.txtRowNo.value);
-            for (rowcount = 1; rowcount < maxrow; rowcount++) {
+            for (rowcount = 1; rowcount <= maxrow; rowcount++) {
                 if (document.frmLeaveApproval["A" + rowcount].checked == false)
                     document.frmLeaveApproval["N" + rowcount].value = 0;
 
