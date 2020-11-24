@@ -2,7 +2,7 @@
 <!-- #include virtual ="/ehres/global/ADOVBS.ASP" -->
 <% dim connect_string 
 
-connect_string = "Provider=SQLOLEDB.1;Persist Security Info=False;UID=HRISMGR;PWD=TIGER;Initial catalog=HRDB_CSEM;Data Source=DESKTOP-SQCF4E5\DEV2017;Connect Timeout=900000"
+connect_string = "Provider=SQLOLEDB.1;Persist Security Info=False;UID=HRISMGR;PWD=TIGER;Initial catalog=HRDB_CSEM;Data Source=DESKTOP-3D92T51\MSSQLSERVER2017;Connect Timeout=900000"
 %>
  
  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
@@ -69,13 +69,15 @@ connect_string = "Provider=SQLOLEDB.1;Persist Security Info=False;UID=HRISMGR;PW
         set myconn = server.CreateObject("ADODB.Connection")
         set rs = server.CreateObject("ADODB.Recordset")    
 
-	myconn.open "Provider=SQLOLEDB.1;Persist Security Info=False;UID=HRISMGR;PWD=TIGER;Initial catalog=HRDB_CSEM;Data Source=DESKTOP-SQCF4E5\DEV2017;Connect Timeout=900000"
+	myconn.open "Provider=SQLOLEDB.1;Persist Security Info=False;UID=HRISMGR;PWD=TIGER;Initial catalog=HRDB_CSEM;Data Source=DESKTOP-3D92T51\MSSQLSERVER2017;Connect Timeout=900000"
 		       
         'sql = "Exec sp_is_empprofile '" + trim(Session("EmpID")) + "','" + trim(Session("Regisno")) + "','Retrieve'"
         'sql = "Exec sp_sa_selEmpAddress 'ms0036','id'"
         'Response.Write sql       
         'sql = "Exec sp_is_selFamilyInfoweb '" + trim(Session("EmpID")) + "','eng'"
-        sql = "Exec sp_is_selContact '" + trim(Session("EmpID")) + "','eng'"                'sql = "Exec sp_is_empprofile 'ms0036','185612-k','Retrieve'"   rs("status")
+        sql = "Exec sp_is_selContact '" + trim(Session("EmpID")) + "','eng'"
+        
+        'sql = "Exec sp_is_empprofile 'ms0036','185612-k','Retrieve'"   rs("status")
         'Response.Write sql       
         rs.Open sql, myconn, adopenstatic, adLockReadOnly, adCmdText 
       	

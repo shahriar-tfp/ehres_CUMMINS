@@ -22,7 +22,7 @@ Dim sql
 Dim page_count
 Dim connect_string
 
-connect_string ="Provider=SQLOLEDB.1;Persist Security Info=False;UID=WEBHR;PWD=password;Initial catalog=HRDB_CSEM;Data Source=DESKTOP-5I6A2IP\MSSQLSERVER12;Connect Timeout=90000000"
+connect_string ="Provider=SQLOLEDB.1;Persist Security Info=False;UID=WEBHR;PWD=password;Initial catalog=HRDB_CSEM;Data Source=DESKTOP-3D92T51\MSSQLSERVER2017;Connect Timeout=90000000"
 %>
 
 <html>
@@ -128,7 +128,34 @@ if(win.focus){win.focus();}}
 		if (yy%4 == 0) MaxDay[1]++;
 
 		if (dd <= MaxDay[mm-1]) return true;
-	}
+        }
+
+
+    //new code for #171
+
+        //toggle check/uncheck in arrpove and reject
+        function UncheckA(vRow) {
+            document.frmLeaveApproval["A" + vRow].checked = false;
+        }
+
+        function UncheckR(vRow) {
+            document.frmLeaveApproval["R" + vRow].checked = false;
+        }
+
+        function ApproveRejectLeave() {
+            var maxrow, approve;
+            maxrow = parseInt(document.frmLeaveApproval.txtRowNo.value);
+            for (rowcount = 1; rowcount <= maxrow; rowcount++) {
+                if (document.frmLeaveApproval["A" + rowcount].checked == false)
+                    document.frmLeaveApproval["N" + rowcount].value = 0;
+
+                if (document.frmLeaveApproval["R" + rowcount].checked == false)
+                    document.frmLeaveApproval["D" + rowcount].value = 0;
+
+            }
+            document.frmLeaveApproval.txtAction.value = "UPD";
+            //document.frmLeaveApproval.submit();
+        }
 	
 	</script>
 
@@ -224,7 +251,7 @@ function ApproveRejectLeave()
 	
 	loop
 
-	frmLeaveApproval.txtAction.value="UPD"
+	document.frmLeaveApproval.txtAction.Value="UPD"
 	document.frmLeaveApproval.submit()
 End function	
 
@@ -700,6 +727,7 @@ end function
 			      	         & Session("EmpID") & "', '" + "A" + "'"
 			      	         
 					  webdbCommand.CommandText = ssql
+                 'comment out this line for testing
 					  webdb.Execute webdbCommand.CommandText
 			      end if
 			      
@@ -766,24 +794,24 @@ end function
                   <td width="44%" colspan="4">&nbsp;</td>
                 </tr>
                 <tr>
-                  <td width="6%">&nbsp;</td>
+                  <!--<td width="3%">&nbsp;</td>-->
                   <td width="50%" colspan="5">
         
-        		  <% if vStatus = "P" and temp <> "" then%>
+        		  <!--<% if vStatus = "P" and temp <> "" then%>
 		            <input type="button" value="Select All Approve" name="cmdSelectAllA" onclick="checkAllApprove()" class="small">
         		  <% end if %>
         		  
         		  <% if (vStatus = "P" and temp <> "") or (vStatus = "A" and temp <> "") then%>
-		            <input type="button" disabled=true value="Select All Reject" name="cmdSelectAllR" onclick="checkAllReject()" class="small">
+		            <input type="button" disabled=true value="Select All Reject" name="cmdSelectAllR" onclick="checkAllReject()" class="small">-->
 		            <input type="submit" value="Update" name="cmdUpdate" <% end if%>
-		             <%if vStatus = "P" and temp <> "" then%> onclick="ApproveRejectLeave()" <%elseif vStatus = "A" and temp <> "" then%> onclick="RejectLeave()" <%end if%> <% if (vStatus = "P" and temp <> "") or (vStatus = "A" and temp <> "") then%> class="small">
+		             <%if vStatus = "P" and temp <> "" then%> onclick="ApproveRejectLeave()" <%elseif vStatus = "A" and temp <> "" then%> onclick="RejectLeave()" <%end if%> <% if (vStatus = "P" and temp <> "") or (vStatus = "A" and temp <> "") then%> class="large">
         		  <% end if %></TD>				    	
 				 <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
 				 <!--employeeid=" + Request.Form("empid") +-->
 				 <!--<% response.write "<a href = 'leavebalance3.asp?" + "'onclick=""NewWindow(this.href,'LeaveBalance','700','480','yes','center');return false""onfocus=""this.blur()"">"%><font class="marineblue">Leave Balance</font></a>-->	
 		         <input type="hidden" name="txtAction">
-		         <input type="hidden" name="txtAppAll">
-		         <input type="hidden" name="txtRejectAll">
+		         <!--<input type="hidden" name="txtAppAll">
+		         <input type="hidden" name="txtRejectAll">-->
 		         
                   <!--</td>-->
                   <td width="44%" colspan="4"><% response.write "<a href = 'leavebalance3.asp?" + "'onclick=""NewWindow(this.href,'LeaveBalance','700','480','yes','center');return false""onfocus=""this.blur()"">"%><font class="marineblue">Leave Balance</font></a>	&nbsp;</td>

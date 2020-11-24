@@ -3,7 +3,7 @@
 '	if Request("txtAction")="DEL" then
 	
 	   Set webdb = Server.CreateObject("ADODB.Connection")
-	   webdb.Open"Provider=SQLOLEDB.1;Persist Security Info=False;UID=HRISMGR;PWD=TIGER;Initial catalog=HRDB_CSEM;Data Source=DESKTOP-SQCF4E5\DEV2017;Connect Timeout=900000"
+	   webdb.Open"Provider=SQLOLEDB.1;Persist Security Info=False;UID=HRISMGR;PWD=TIGER;Initial catalog=HRDB_CSEM;Data Source=DESKTOP-3D92T51\MSSQLSERVER2017;Connect Timeout=900000"
 	   Set webdbRecordset = Server.CreateObject("ADODB.Recordset")
 	   Set webdbCommand = Server.CreateObject("ADODB.Command")
 	   Set webdbCommand.ActiveConnection = webdb

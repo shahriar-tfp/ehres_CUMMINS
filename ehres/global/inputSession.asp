@@ -52,6 +52,7 @@ sub inputsession(vtempleavetypeid,vtempdate1,vtempdate2,vtempstatus)
       session("ssdate2") = Vtempdate2
       session("ssID") = vtempID
       session("ssSearchBy") = vtempSearchBy
+    
    end sub    
    
    sub inputleavebal(vtempdate1,vtempdate2,vtempcboempid)
